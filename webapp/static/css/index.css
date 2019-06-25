@@ -1,0 +1,26 @@
+header form.customform input,header form.customform button {
+    margin-bottom: 0;
+  }
+  
+  .icon-sli-basket::before {
+    color: #444;
+    font-size: 1.3rem;
+    margin-right: 5px;
+    top: 2px;
+    position: relative;
+  }
+  
+  
+  @media screen and (max-width: 768px) {
+    .right {
+      float:none;
+    }
+    nav {
+      padding: 0;
+    }
+  
+    .cart {
+      text-align: center;
+    }
+  }
+  

@@ -1,0 +1,10 @@
+{% extends 'webapp/index.html' %}
+
+{% block content %}
+<form method="POST" class="post-form">{% csrf_token %}
+    {{ form.as_p}}
+    <a href="/change-password" onclick="w3_close()">Change password</a> <br>
+    <button type="submit" class="save btn btn-warning">Save</button>
+</form>
+
+{% endblock %}

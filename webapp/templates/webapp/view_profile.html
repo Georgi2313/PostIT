@@ -1,0 +1,17 @@
+{% extends 'webapp/index.html' %}
+
+{% block content %}
+ 
+        <h2>Profile</h2>
+        <br>
+        <p><a href="/profile/edit" onclick="w3_close()" ><i class='fas fa-edit' style='font-size:20px'></i></a> </p>
+        <hr>
+
+        <p>UserName : {{user_info}}</p>
+        <p>FirstName : {{user_info.first_name}}</p>
+        <p>LastName : {{user_info.last_name}}</p>   
+        <p>Email id : {{user_info.email}}</p>   
+
+        </p>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'webapp/index.html' %}
+
+{% block content %}
+
+<h1 class="margin-bottom">Posts</h1>
+{% for post in posts %}
+
+<div class="container">
+<div class="s-12 m-12 l-4 xl-3 xxl-3">
+    <a href="/"><h4 class="img-title">{{ post.title }}</h4></a>
+    <p class="img-description">{{ post.body }}</p>
+    {% if post.pic %}
+    <div>
+        <a href="/"><img class="full-img" src="{{ post.pic.url }}"></a>
+    </div>
+    {% endif %}
+    <div class="hyperlink-bar">
+    <a href="#" class="fa fa-facebook"></a>
+    <a href="#" class="fa fa-twitter"></a>
+    </div>
+    <hr>
+</div>
+</div>
+{% endfor %}
+
+{% endblock %}
+
+
+<!--
+
+<html>
+    <h2>PostIT</h2>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+    </script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> 
+    </script> 
+
+    <body>
+    <div class="col-md-4"> 
+            {% for post in posts %}
+   
+            <div>
+                <h4>Title: {{ post.title }}</h4>
+                <img src="{{ post.pic.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;">
+                <p>Body: {{ post.body }}</p>
+                <p>date: {{ post.post_date}}</p>
+                <br>
+            </div> 
+        {% endfor %}
+    </div>
+    </body> 
+</html>
+
+-->
