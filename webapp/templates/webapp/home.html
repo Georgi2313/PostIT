@@ -7,7 +7,7 @@
 
 <div class="container">
 <div class="s-12 m-12 l-4 xl-3 xxl-3">
-    <a href="/"><h4 class="img-title">{{ post.title }}</h4></a>
+    <a href="{% url 'view_post' pk=post.pk %}"><h4 class="img-title">{{ post.title }}</h4></a>
     <p class="img-description">{{ post.body }}</p>
     {% if post.pic %}
     <div>

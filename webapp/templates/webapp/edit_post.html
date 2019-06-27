@@ -1,0 +1,12 @@
+{% extends 'webapp/index.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="margin-bottom">Edit</h1>
+    <form method = "post" enctype="multipart/form-data" class="post-form"> 
+        {% csrf_token %} 
+        {{ form.as_p }} 
+        <button type="submit">Upload</button> 
+    </form> 
+</div>
+{% endblock %}

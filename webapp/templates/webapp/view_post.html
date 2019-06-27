@@ -1,0 +1,30 @@
+{% extends 'webapp/index.html' %}
+
+{% block content %}
+
+<h1 class="margin-bottom">Posts</h1>
+
+<div class="container">
+<div class="s-12 m-12 l-4 xl-3 xxl-3">
+    <a><h4 class="img-title">{{ post.title }}</h4></a>
+    <a href="{% url 'edit_post' pk=post.pk %}"><p class="img-title">edit</p></a>
+    <p class="img-description">{{ post.body }}</p>
+    {% if post.pic %}
+    <div>
+        <a><img class="full-img" src="{{ post.pic.url }}"></a>
+    </div>
+    {% endif %}
+    <div class="hyperlink-bar">
+    <a href="#" class="fa fa-facebook"></a>
+    <a href="#" class="fa fa-twitter"></a>
+    </div>
+    <div>
+        <p class="img-description"><h5>post_date___:</h5>{{ post.post_date }}</p>
+        <p class="img-description"><h5>created_date:</h5>{{ post.created_date }}</p>
+    </div>
+    <a href="{% url 'delete_post' pk=post.pk %}"><p class="img-title">delete</p></a>
+    <hr>
+</div>
+</div>
+
+{% endblock %}

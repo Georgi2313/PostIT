@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
@@ -75,10 +75,47 @@ def success(request):
     return redirect('/home')
 
 @login_required
+def view_post(request,pk):
+    if request.method == 'GET':
+        post=get_object_or_404(Posts,pk=pk)
+#        post = Posts.objects.get(pk=pk)
+        if request.user.username == post.author:
+            return render(request,'webapp/view_post.html',{'post':post})
+        else:
+            return render(request,'webapp/unauthorized_access.html',{})
+
+@login_required
+def edit_post(request,pk):   
+    if request.method == 'POST':
+        post=get_object_or_404(Posts,pk=pk)
+        form=AddForm(request.POST,request.FILES,instance=post)
+        if form.is_valid():
+            post=form.save(commit=False)
+            post.save()
+            return redirect('/home')
+        
+    post=get_object_or_404(Posts,pk=pk)
+    form=AddForm(instance=post)
+    if request.user.username == post.author:
+        return render(request,'webapp/edit_post.html',{'form':form}) 
+    else:
+        return render(request,'webapp/unauthorized_access.html',{})    
+
+@login_required
+def delete_post(request,pk):
+
+    post = Posts.objects.get(pk=pk)
+    if request.user.username == post.author:
+        post = Posts.objects.get(pk=pk).delete()
+        return redirect('/home')
+    return render(request,'webapp/unauthorized_access.html',{}) 
+    
+
+@login_required
 def home(request):
     if request.method == 'GET': 
-        #posts = Posts.objects.filter(author = request.user).order_by('-post_date')
-        posts = Posts.objects.all()
+        posts = Posts.objects.filter(author = request.user).order_by('-post_date')
+#        posts = Posts.objects.all()
         return render(request,'webapp/home.html',{'posts':posts})
 
 

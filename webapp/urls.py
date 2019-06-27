@@ -24,9 +24,13 @@ urlpatterns = [
     url(r'^reset-password/done/$', password_reset_done, name = 'password_reset_done'),
     url(r'^reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', password_reset_confirm, name = 'password_reset_confirm'),
     url(r'^reset-password/complete/$', password_reset_complete, name = 'password_reset_complete'),
+    path('view-post/<int:pk>/', views.view_post, name='view_post'),  
+    path('edit-post/<int:pk>/', views.edit_post, name='edit_post'),
+    path('delete-post/<int:pk>/',views.delete_post, name='delete_post'),
     path('home/',views.home,name='home'),
     path('add/', views.add, name = 'add'), 
     path('success/', views.success, name = 'success'), 
+     
 ]
 if settings.DEBUG: 
         urlpatterns += static(settings.MEDIA_URL, 
