@@ -14,6 +14,8 @@ from django.contrib.auth.views import (
 )
 
 urlpatterns = [
+    path('',views.signup,name='signup'),
+
     url(r'^login/$',login,{'template_name': 'webapp/login.html'}),
     url(r'^logout/$',logout,{'template_name': 'webapp/logout.html'}),
     url(r'^signup/$', views.signup, name = 'signup'),
@@ -24,6 +26,7 @@ urlpatterns = [
     url(r'^reset-password/done/$', password_reset_done, name = 'password_reset_done'),
     url(r'^reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', password_reset_confirm, name = 'password_reset_confirm'),
     url(r'^reset-password/complete/$', password_reset_complete, name = 'password_reset_complete'),
+    url(r'^past/$',views.past, name='past'), 
     path('view-post/<int:pk>/', views.view_post, name='view_post'),  
     path('edit-post/<int:pk>/', views.edit_post, name='edit_post'),
     path('delete-post/<int:pk>/',views.delete_post, name='delete_post'),

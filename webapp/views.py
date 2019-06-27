@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
+from urllib.parse import quote_plus
 from django.utils import timezone
 from django.http import HttpResponse 
 from .models import Posts
@@ -80,7 +81,8 @@ def view_post(request,pk):
         post=get_object_or_404(Posts,pk=pk)
 #        post = Posts.objects.get(pk=pk)
         if request.user.username == post.author:
-            return render(request,'webapp/view_post.html',{'post':post})
+            twitter_share_code = quote_plus(post.body)
+            return render(request,'webapp/view_post.html',{'post':post,'twitter_share_code':twitter_share_code})
         else:
             return render(request,'webapp/unauthorized_access.html',{})
 
@@ -114,8 +116,14 @@ def delete_post(request,pk):
 @login_required
 def home(request):
     if request.method == 'GET': 
-        posts = Posts.objects.filter(author = request.user).order_by('-post_date')
+        posts = Posts.objects.filter(author = request.user,post_date__range=[timezone.now(), "2020-01-31"]).order_by('post_date')
 #        posts = Posts.objects.all()
+        return render(request,'webapp/home.html',{'posts':posts})
+
+@login_required
+def past(request):
+    if request.method == 'GET': 
+        posts = Posts.objects.filter(author = request.user,post_date__range=["2018-01-31",timezone.now()]).order_by('-post_date')
         return render(request,'webapp/home.html',{'posts':posts})
 
 

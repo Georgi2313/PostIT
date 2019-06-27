@@ -1,0 +1,27 @@
+{% extends 'webapp/index.html' %}
+
+{% block content %}
+
+<h1 class="margin-bottom">Past</h1>
+{% for post in posts %}
+
+<div class="container">
+<div class="s-12 m-12 l-4 xl-3 xxl-3">
+    <a href="{% url 'view_post' pk=post.pk %}"><h4 class="img-title">{{ post.title }}</h4></a>
+    <p class="img-description">{{ post.body }}</p>
+    {% if post.pic %}
+    <div>
+        <a href="/"><img class="full-img" src="{{ post.pic.url }}"></a>
+    </div>
+    {% endif %}
+    <div class="hyperlink-bar">
+    <a href="#" class="fa fa-facebook"></a>
+    <a href="#" class="fa fa-twitter"></a>
+    </div>
+    <hr>
+</div>
+</div>
+{% endfor %}
+
+{% endblock %}
+

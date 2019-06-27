@@ -15,12 +15,13 @@
     </div>
     {% endif %}
     <div class="hyperlink-bar">
-    <a href="#" class="fa fa-facebook"></a>
-    <a href="#" class="fa fa-twitter"></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{twitter_share_code}}%20{{request.build_absolute_uri }}" class="fa fa-facebook"></a>
+    <a href="https://twitter.com/intent/tweet?text={{twitter_share_code}} " class="fa fa-twitter"></a>
     </div>
-    <div>
-        <p class="img-description"><h5>post_date___:</h5>{{ post.post_date }}</p>
-        <p class="img-description"><h5>created_date:</h5>{{ post.created_date }}</p>
+    <div >
+        <p class="img-title"><h5>post_date___:</h5>{{ post.post_date|timesince }}</p>
+<!--    <p class="img-description"><h5>post_date___:</h5>{{ post.post_date|timesince }}</p>  -->
+        <p class="img-description"><h5>created_date:</h5>{{ post.created_date}}</p>
     </div>
     <a href="{% url 'delete_post' pk=post.pk %}"><p class="img-title">delete</p></a>
     <hr>

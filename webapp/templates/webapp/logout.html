@@ -1,8 +1,73 @@
-<html>
-    <body>
-        <h2>Logout</h2>
-        <br>
-        
-    </body>
+{% load static %}
 
+<!DOCTYPE html>
+<html lang="en-US">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>PostIT</title>
+      <link rel="stylesheet" href="{% static 'css/response.css' %}">
+      <link rel="stylesheet" href="{% static 'css/index.css' %}">
+      <script src="{% static 'js/jquery-1.8.3.min.js' %}"></script>   
+      <script src="{% static 'js/response.js' %}"></script>   
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="//bootstrap-extension.com/css/4.4.0/bootstrap-extension.min.css" type="text/css">
+      <script src="//bootstrap-extension.com/js/4.4.0/bootstrap-extension.min.js"></script>
+   </head>
+   <body>
+      <!-- HEADER -->
+      <header>
+        <div class="line">
+         <div class="box">
+          <div class="s-12 l-2">
+            <div style="text-align:center">
+               <h1><strong>PostIT</strong></h1>
+            </div>
+         </div>
+       </div>
+      </div>
+
+         <!-- TOP NAV -->
+         <div class="line">
+            <nav>
+               <div class="top-nav">
+
+                  <ul class="right">
+                     <li><a href="/signup" onclick="w3_close()">Signup</a></li>
+                     <li><a href="/login" onclick="w3_close()">Login</a></li>
+                  </ul>
+               </div>
+            </nav>
+         </div>
+      </header>
+      <!-- ASIDE NAV AND CONTENT -->
+      <div class="line">
+         <div class="box margin-bottom">
+            <div class="margin2x">
+               <!-- CONTENT -->
+               <section class="container">
+                    <h2>Logout</h2>
+                    <br>
+                </section>
+            </div>
+         </div>
+      </div>
+
+
+      <script type="text/javascript">
+        jQuery(document).ready(function($) {
+          var owl = $('#header-carousel');
+          owl.owlCarousel({
+            nav: false,
+            dots: true,
+            items: 1,
+            loop: true,
+            navText: ["&#xf007","&#xf006"],
+            autoplay: true,
+            autoplayTimeout: 3000
+          });
+        })
+      </script>
+   </body>
 </html>
+                   
