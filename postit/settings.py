@@ -125,10 +125,10 @@ STATIC_ROOT = os.path.join(BASE_DIR,'static')
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media') 
 MEDIA_URL = '/media/'
 
-LOGIN_REDIRECT_URL = '/home'
+LOGIN_REDIRECT_URL = '/home/'
 
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 1025
+#EMAIL_HOST = 'localhost'
+#EMAIL_PORT = 1025
 #EMAIL_HOST = "smtp.gmail.com"
 #EMAIL_HOST_USER = "username@gmail.com"
 #EMAIL_HOST_PASSWORD = 'yourpassword'
