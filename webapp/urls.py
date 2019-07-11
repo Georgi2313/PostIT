@@ -14,10 +14,11 @@ from django.contrib.auth.views import (
 )
 
 urlpatterns = [
-    path('',views.signup,name='signup'),
+    path('',login,{'template_name': 'webapp/login.html'}),
 
     url(r'^login/$',login,{'template_name': 'webapp/login.html'}),
     url(r'^logout/$',logout,{'template_name': 'webapp/logout.html'}),
+    url(r'^auth/', include('social_django.urls', namespace='social')), 
     url(r'^signup/$', views.signup, name = 'signup'),
     url(r'^profile/$',views.view_profile, name='view_profile'), 
     url(r'^profile/edit/$',views.edit_profile, name='edit_profile'),  
@@ -33,6 +34,7 @@ urlpatterns = [
     path('home/',views.home,name='home'),
     path('add/', views.add, name = 'add'), 
     path('success/', views.success, name = 'success'), 
+    path('post_to_fb/',views.post_to_fb, name = 'post_to_fb'),
      
 ]
 if settings.DEBUG: 

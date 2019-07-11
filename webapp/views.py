@@ -4,7 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from urllib.parse import quote_plus
 from django.utils import timezone
-from django.http import HttpResponse 
+from django.http import HttpResponse
+from facepy import GraphAPI 
 from .models import Posts
 from .forms import *
 
@@ -126,5 +127,14 @@ def past(request):
         posts = Posts.objects.filter(author = request.user,post_date__range=["2018-01-31",timezone.now()]).order_by('-post_date')
         return render(request,'webapp/home.html',{'posts':posts})
 
-
+@login_required
+def post_to_fb(request):
+    oauth_access_token=EAAOyrUXzEuQBADrP5Qsnk9RBPn520wdhJcXFKUU8EqJZBvZA0ylj8Qgc7ZB289N0wKyNo8254toPrB9przZCUJj3feYAthYpPVhrQ78d4qGAowRUZBZCjbSirvjXZC05VJxkBB0OFt5ThcKLU57o8XIQgGWSz4W5CC7FrkCkOQ7yP25iYPckMlR0S9DzMIaiI4ZD
+    graph=GraphAPI(oauth_access_token)
+    #graph.post(path="me/feed", message="hello FB", caption="hello FB", description="hello FB")
+    graph.post(
+        path = 'me/photos',
+        source = open('postit.pythonanywhere.com/media/images/1561900a440900282329821236643243.jpg', 'rb')
+    )
+    return render(request,'webapp/home.html',{})
 

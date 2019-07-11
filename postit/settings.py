@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'cd46usznagcmmcpjv=(a0v1f(&e8=fnpxov)c$8@g_)w6gu$#='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1','.pythonanywhere.com','.com']
 
@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'webapp'
+    'social_django',
+    'webapp',
+#    'django.contrib.twittercards',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +65,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -118,6 +122,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.open_id.OpenIdAuth',  # for Google authentication
+    'social_core.backends.google.GoogleOpenId',  # for Google authentication
+    'social_core.backends.google.GoogleOAuth2',  # for Google authentication
+    'social_core.backends.github.GithubOAuth2',  # for Github authentication
+    'social_core.backends.facebook.FacebookOAuth2',  # for Facebook authentication
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
@@ -125,7 +139,17 @@ STATIC_ROOT = os.path.join(BASE_DIR,'static')
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media') 
 MEDIA_URL = '/media/'
 
+LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = '/home/'
+
+FACEBOOK_APP_ID = '1040882202776292'
+FACEBOOK_APP_SECRET = '4bf6ecbe5ee83289c3821e4f2315b6b5'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ='501270556607-ocpdcvg1mqdlsjh5q8deo5fj95sbcf34.apps.googleusercontent.com'  # CLient Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'yNsBN5wgHp6uCzuxx1DllBMt' # Secret Key
+
+SOCIAL_AUTH_GITHUB_KEY = 'ee28dfa02cf90e4e2b41' #Paste Client ID
+SOCIAL_AUTH_GITHUB_SECRET = '862c9d8c0b5431c98ac0769282909b2674efbee6' #Paste Secret Key
 
 #EMAIL_HOST = 'localhost'
 #EMAIL_PORT = 1025
