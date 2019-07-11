@@ -5,7 +5,6 @@ from django.contrib.auth import update_session_auth_hash
 from urllib.parse import quote_plus
 from django.utils import timezone
 from django.http import HttpResponse
-from facepy import GraphAPI 
 from .models import Posts
 from .forms import *
 
