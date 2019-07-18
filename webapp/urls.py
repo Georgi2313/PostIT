@@ -35,7 +35,7 @@ urlpatterns = [
     path('add/', views.add, name = 'add'), 
     path('success/', views.success, name = 'success'), 
     path('post_to_fb/',views.post_to_fb, name = 'post_to_fb'),
-     
+    path('share/',views.share, name = 'share'),    
 ]
 if settings.DEBUG: 
         urlpatterns += static(settings.MEDIA_URL, 
