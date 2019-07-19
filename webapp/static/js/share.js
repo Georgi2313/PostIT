@@ -1,7 +1,7 @@
 const shareButton = document.querySelector('.share-button');
 const shareDialog = document.querySelector('.share-dialog');
 const closeButton = document.querySelector('.close-button');
-const shareData = { files: 'https://postit.pythonanywhere.com/media/images/pythonanywhere.jpg' };
+var img = "https://postit.pythonanywhere.com/media/images/pythonanywhere.jpg"
 
 
 shareButton.addEventListener('click', event => {
@@ -9,8 +9,8 @@ shareButton.addEventListener('click', event => {
    navigator.share({
       title: 'PostIT (title)',
       text: 'sample text',
-      url: 'https://postit.pythonanywhere.com',
-      files: 'https://postit.pythonanywhere.com/media/images/pythonanywhere.jpg', 
+      image: img,
+
     }).then(() => {
       console.log('Thanks for sharing!');
     })
