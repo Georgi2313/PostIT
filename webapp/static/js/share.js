@@ -7,9 +7,9 @@ var img = "https://postit.pythonanywhere.com/media/images/pythonanywhere.jpg"
 shareButton.addEventListener('click', event => {
   if (navigator.share) { 
    navigator.share({
-      title: "{{ post.title }}",
-      text: "{{ post.body }}",
-      image: img,  mimeType: 'image/jpg'
+      title: title_temp,
+      text: body_temp,
+      image: { source:"https://postit.pythonanywhere.com/media/images/pythonanywhere.jpg" , mimeType: 'image/jpg'}
 
     }).then(() => {
       console.log('Thanks for sharing!');
