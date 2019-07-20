@@ -32,6 +32,7 @@ urlpatterns = [
     path('edit-post/<int:pk>/', views.edit_post, name='edit_post'),
     path('delete-post/<int:pk>/',views.delete_post, name='delete_post'),
     path('home/',views.home,name='home'),
+    path('add/home/',views.home,name='home'),
     path('add/', views.add, name = 'add'), 
     path('success/', views.success, name = 'success'), 
     path('post_to_fb/',views.post_to_fb, name = 'post_to_fb'),  
