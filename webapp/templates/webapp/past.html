@@ -2,19 +2,53 @@
 
 {% block content %}
 
-{% for post in posts %}
-<div class="container left">
-    <div class="content">
-        <a href="{% url 'view_post' pk=post.pk %}"><h3>{{ post.title }}</h3></a>
-        <p>{{ post.body }}</p>
-        {% if post.pic %}
-        <div>
-            <a><img class="full-img" src="{{ post.pic.url }}"></a>
+<div class="timeline">
+{% for post in posts_after %}
+
+    <div class="pcontainer left">
+        <div class="content" style="background-color:#ffffff">
+            <h5>
+                <b style="color:green; "><font size=5>&#8729</font></b>
+                <strong><font size="2">{{ post.post_date|date:"j-M" }}</font></strong></h5>
+            <a href="{% url 'view_post' pk=post.pk %}"><h3>{{ post.title }}</h3></a>
+            <p>{{ post.body }}</p>
+            {% if post.pic %}
+            <div>
+                <a><img class="full-img" src="{{ post.pic.url }}"></a>
+            </div>
+            {% endif %}
         </div>
-        {% endif %}
+    </div>
+
+{% endfor %}
+<div class="row">
+    <div class="col-xs-9">
+        <hr style="background-color:green;height: 3px;">
+    </div>
+    <div class="col-xs-3">
+        <h5 style="color:white"><strong>NOW</strong></h5>
     </div>
 </div>
+
+{% for post in posts_before %}
+
+    <div class="pcontainer left">
+        <div class="content" style="background-color:#ffffff">
+            <h5>
+                <b style="color:red; "><font size=5>&#8729</font></b>
+                <strong><font size="2">{{ post.post_date|date:"j-M" }}</font></strong></h5>
+            <a href="{% url 'view_post' pk=post.pk %}"><h3>{{ post.title }}</h3></a>
+            <p>{{ post.body }}</p>
+            {% if post.pic %}
+            <div>
+                <a><img class="full-img" src="{{ post.pic.url }}"></a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
 {% endfor %}
+</div>
 
 {% endblock %}
 

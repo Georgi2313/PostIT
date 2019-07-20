@@ -2,15 +2,15 @@
 
 {% block content %}
 <div class="content">
-        <h2>Profile</h2>
+        <h2>Profile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/profile/edit" onclick="w3_close()" ><font size="3"><span class="glyphicon glyphicon-pencil"></span></font></a></h2>
+
         <br>
-        <p><a href="/profile/edit" onclick="w3_close()" ><span class="glyphicon glyphicon-pencil"></span></a> </p>
         <hr>
 
-        <p>UserName : {{user_info}}</p>
-        <p>FirstName : {{user_info.first_name}}</p>
-        <p>LastName : {{user_info.last_name}}</p>   
-        <p>Email id : {{user_info.email}}</p>   
+        <p><strong>UserName :</strong> {{user_info}}</p>
+        <p><strong>FirstName :</strong> {{user_info.first_name}}</p>
+        <p><strong>LastName :</strong> {{user_info.last_name}}</p>   
+        <p><strong>Email id :</strong>  {{user_info.email}}</p>   
 
         </p>
 </div>

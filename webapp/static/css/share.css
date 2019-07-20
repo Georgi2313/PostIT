@@ -65,7 +65,8 @@ html {
   .share-button, .share-dialog {
     position: relative;
     align-self: center;
-    transform: translate(-50%, -50%);
+    top: 50%;
+    transform: translate(0%, 0%);
   }
   
   .share-dialog {

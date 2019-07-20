@@ -123,8 +123,9 @@ def home(request):
 @login_required
 def past(request):
     if request.method == 'GET': 
-        posts = Posts.objects.filter(author = request.user,post_date__range=["2018-01-31",timezone.now()]).order_by('-post_date')
-        return render(request,'webapp/home.html',{'posts':posts})
+        posts_before = Posts.objects.filter(author = request.user,post_date__range=["2018-01-31",timezone.now()]).order_by('-post_date')
+        posts_after = Posts.objects.filter(author = request.user,post_date__range=[timezone.now(), "2020-01-31"]).order_by('post_date')
+        return render(request,'webapp/past.html',{'posts_before':posts_before, 'posts_after':posts_after})
 
 @login_required
 def post_to_fb(request):
@@ -136,7 +137,3 @@ def post_to_fb(request):
         source = open('postit.pythonanywhere.com/media/images/1561900a440900282329821236643243.jpg', 'rb')
     )
     return render(request,'webapp/home.html',{})
-
-@login_required
-def share(request):
-    return render(request,'webapp/share.html',{})
