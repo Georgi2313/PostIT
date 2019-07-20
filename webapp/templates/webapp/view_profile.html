@@ -1,7 +1,7 @@
-{% extends 'webapp/index.html' %}
+{% extends 'webapp/base.html' %}
 
 {% block content %}
- 
+<div class="content">
         <h2>Profile</h2>
         <br>
         <p><a href="/profile/edit" onclick="w3_close()" ><span class="glyphicon glyphicon-pencil"></span></a> </p>
@@ -13,5 +13,5 @@
         <p>Email id : {{user_info.email}}</p>   
 
         </p>
-
+</div>
 {% endblock %}

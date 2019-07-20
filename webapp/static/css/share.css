@@ -7,6 +7,16 @@ html {
     padding: 0;
     margin: 0;
   }
+
+  .edit-button {
+    position: relative;
+    left: 20%;
+  }
+  
+  .delete-button {
+    position: relative;
+    left: 60%;
+  }  
   
   body {
     font-family: -apple-system,BlinkMacSystemFont,San Francisco,Helvetica Neue,Helvetica,Ubuntu,Roboto,Noto,Segoe UI,Arial,sans-serif;
@@ -48,14 +58,13 @@ html {
   }
   
   .share-button, .copy-link {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 30%;
+    padding-right: 0px;
   }
   
   .share-button, .share-dialog {
     position: relative;
-    top: 0%;
-    left: 50%;
+    align-self: center;
     transform: translate(-50%, -50%);
   }
   

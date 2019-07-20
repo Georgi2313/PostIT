@@ -1,86 +1,79 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en-US">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>PostIT</title>
-      <link rel="stylesheet" href="{% static 'css/response.css' %}">
-      <link rel="stylesheet" href="{% static 'css/index.css' %}">
-      <script src="{% static 'js/jquery-1.8.3.min.js' %}"></script>   
-      <script src="{% static 'js/response.js' %}"></script>   
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <link rel="stylesheet" href="//bootstrap-extension.com/css/4.4.0/bootstrap-extension.min.css" type="text/css">
-      <script src="//bootstrap-extension.com/js/4.4.0/bootstrap-extension.min.js"></script>
-   </head>
-   <body>
-      <!-- HEADER -->
-      <header>
-        <div class="line">
-         <div class="box">
-          <div class="s-12 l-2">
-               <div style="text-align:center">
-                     <h1><strong>PostIT<a style="font-size:55%;">&#945;</a></strong></h1>
-               </div>
-          </div>
-       </div>
-      </div>
+<html>
+<title>PostIt</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'css/timeline.css' %}">
+<style>
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 12px}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {width: 120px;background: #222;}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {margin-left: 120px}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+</style>
+<body class="postit-black">
 
-         <!-- TOP NAV -->
-         <div class="line">
-            <nav>
-               <div class="top-nav">
+<!-- Icon Bar (Sidebar - hidden on small screens) -->
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
 
-                  <ul class="right">
-                     <li><a href="/signup" onclick="w3_close()">Signup</a></li>
-                  </ul>
-               </div>
-            </nav>
-         </div>
-      </header>
-      <!-- ASIDE NAV AND CONTENT -->
-      <div class="line">
-         <div class="box margin-bottom">
-            <div class="margin2x">
-               <!-- CONTENT -->
-               <section class="container">
-                    <h2>Login</h2>
-                    <br>
-                    <div class='container'>
-                        <form method="POST" >{% csrf_token %}
-                            {{ form.as_p}}
-                            <button type="submit" >Log in</button>
-                        </form>
-                        <br>
-                        
-                        <a href="{% url 'social:begin' 'google-oauth2' %}" onclick="w3_close()"><h5 class="btn btn-danger"><i class="fa fa-google"></i>Sign in with <b>Google</b></h5></a><br><br>
-                        <a href="{% url 'social:begin' 'github' %}" onclick="w3_close()"><h5 class="btn btn-success"><i class="fa fa-github" ></i>Sign in with <b>GitHub</b></h5></a><br>
-                        <hr>
-                        <li><a href="/reset-password" onclick="w3_close()">Forgot Password</a></li>
-                    </div>
-                </section>
+    <a href="" onclick="w3_close()" class="w3-bar-item w3-button w3-padding-large w3-black">
+    <i class="glyphicon glyphicon-rub w3-xxlarge"></i>
+    <p>PostIT</p>
+    </a>  
+
+  <a href="/signup" onclick="w3_close()" class="w3-bar-item w3-button w3-padding-large w3-black">
+    <i class="glyphicon glyphicon-plus w3-xxlarge"></i>
+    <p>Signup</p>
+  </a>
+</nav>
+
+<!-- Navbar on small screens (Hidden on medium and large screens) -->
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="" onclick="w3_close()" class="w3-bar-item w3-button" style="width:20% !important;"><i class="glyphicon glyphicon-rub w3-xlarge"></i></a>
+    <a href="/signup" onclick="w3_close()" class="w3-bar-item w3-button" style="width:20% !important; float:right;"><i class="glyphicon glyphicon-plus w3-xlarge"></i></a>
+
+  </div>
+</div>
+<div style="padding-top: 10%">
+   <div class="w3-padding-large" id="main">
+
+      <div class="content">
+         <h2>Login</h2>
+         <br>
+         <div>
+            <form method="POST" >{% csrf_token %}
+                  {{ form.as_p}}
+                  <button type="submit" >Log in</button>
+            </form>
+            <br><br>
+            <div class="row">
+            <div class="col-sm-4">
+               <a href="/signup" onclick="w3_close()"><h5 class="btn btn-primary btn-block"><i class="glyphicon glyphicon-rub " ></i>&nbsp;&nbsp;&nbsp;Sign in with <b>PostIt</b></h5></a><br>              
             </div>
+            <div class="col-sm-4">
+               <a href="{% url 'social:begin' 'github' %}" onclick="w3_close()"><h5 class="btn btn-success btn-block"><i class="fa fa-github" ></i>&nbsp;&nbsp;&nbsp;Sign in with <b>GitHub</b></h5></a><br>
+            </div>
+            <div class="col-sm-4">
+               <a href="{% url 'social:begin' 'google-oauth2' %}" onclick="w3_close()"><h5 class="btn btn-danger btn-block"><i class="fa fa-google"></i>&nbsp;&nbsp;&nbsp;Sign in with <b>Google</b></h5></a>
+            </div>
+            </div>
+            <hr>
+            <li><a href="/reset-password" onclick="w3_close()">Forgot Password</a></li>
          </div>
       </div>
-
-
-      <script type="text/javascript">
-        jQuery(document).ready(function($) {
-          var owl = $('#header-carousel');
-          owl.owlCarousel({
-            nav: false,
-            dots: true,
-            items: 1,
-            loop: true,
-            navText: ["&#xf007","&#xf006"],
-            autoplay: true,
-            autoplayTimeout: 3000
-          });
-        })
-      </script>
-   </body>
+   </div>
+</div>
+         
+</body>
 </html>
+
