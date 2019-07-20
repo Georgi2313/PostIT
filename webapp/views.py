@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth import update_session_auth_hash, authenticate, login
 from urllib.parse import quote_plus
 from django.utils import timezone
 from django.http import HttpResponse
@@ -14,6 +14,10 @@ def signup(request):
     if request.method == 'POST' :
         if form.is_valid():
             form.save()
+            username = self.request.POST['username']
+            password = self.request.POST['password1']
+            user = authenticate(username=username, password=password)
+            login(self.request, user)
             return redirect('home')
         else:
             form= AccountForm()
