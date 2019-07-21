@@ -129,7 +129,11 @@ def past(request):
     if request.method == 'GET': 
         posts_before = Posts.objects.filter(author = request.user,post_date__range=["2018-01-31",timezone.now()]).order_by('-post_date')
         posts_after = Posts.objects.filter(author = request.user,post_date__range=[timezone.now(), "2020-01-31"]).order_by('-post_date')
-        return render(request,'webapp/past.html',{'posts_before':posts_before, 'posts_after':posts_after})
+        if len(posts_after)==0 and len(posts_before)==0:
+            check = 'no_posts'
+        else:
+            check = 'posts'
+        return render(request,'webapp/past.html',{'posts_before':posts_before, 'posts_after':posts_after, 'check':check})
 
 @login_required
 def post_to_fb(request):

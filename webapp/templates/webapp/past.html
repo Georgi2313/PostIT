@@ -21,14 +21,16 @@
     </div>
 
 {% endfor %}
-<div class="row">
-    <div class="col-xs-9">
-        <hr style="background-color:green;height: 3px;">
-    </div>
-    <div class="col-xs-3">
-        <h5 style="color:white"><strong>NOW</strong></h5>
+{% if check == 'posts' %}
+<div class="col-xs-3">
+    <div class="now_circle">
     </div>
 </div>
+<div class="col-xs-9">
+    <h5 style="color:white;padding-top: 10px"><strong>NOW</strong></h5>
+</div>
+<br><br><br>
+{% endif %}
 
 {% for post in posts_before %}
 
@@ -49,6 +51,12 @@
 
 {% endfor %}
 </div>
+{% if check == 'no_posts' %}
+<div class="col-sm-4">
+    <br><br>
+    <h2 style="color:rgb(54, 54, 54);text-align:center;">No Posts</h2>
+</div>
+{% endif %}
 
 {% endblock %}
 
